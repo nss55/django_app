@@ -1,6 +1,6 @@
 FROM python:latest
 WORKDIR /app
-COPY disaster_managements/. .
+COPY disaster_management/. .
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 EXPOSE 8000
