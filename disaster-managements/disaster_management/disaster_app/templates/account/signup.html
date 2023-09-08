@@ -1,0 +1,24 @@
+{% extends 'account/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container mt-5">
+    <div class="card mx-auto">
+      <div class="card-title h3 text-center">
+        Sign Up
+      </div>
+      <div class="card-body">
+       
+       
+    <form class="login" method="POST" action="{% url 'account_signup' %}">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <button class="btn btn-danger primaryAction " type="submit">Sign Up</button>
+    <div>
+        already have account?<a class="text-decoration-none text-secondary" href="{% url 'account_login' %}">login</a>
+    </div>
+    </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    {% endblock %}

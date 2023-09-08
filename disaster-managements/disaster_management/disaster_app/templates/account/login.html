@@ -1,0 +1,41 @@
+{% extends 'account/base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+<div class="container mt-5 ">
+
+{% get_providers as socialaccount_providers %}
+
+<div class="container">
+<div class="card mx-auto">
+  <div class="card-title h3 text-center">
+    Sign In
+  </div>
+  <div class="card-body">
+    <div class="text-center mb-3">
+      <a class="login-with-google-btn text-decoration-none" href="{% provider_login_url 'google' %}">Google</a>
+    </div>
+   
+<form class="login" method="POST" action="{% url 'account_login' %}">
+  {% csrf_token %}
+  {{ form|crispy }}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <button class="btn btn-danger primaryAction " type="submit">{% trans "Sign In" %}</button>
+  <div>
+  <a class="text-decoration-none text-secondary" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+</div>
+</form>
+<div>
+  You don't have account?<a class="text-decoration-none text-secondary" href="{% url 'account_signup' %}">SignUp</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

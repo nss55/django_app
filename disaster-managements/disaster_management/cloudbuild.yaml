@@ -1,0 +1,41 @@
+timeout: 3600s
+options:
+  substitution_option: 'ALLOW_LOOSE'
+  machineType: 'E2_HIGHCPU_8'
+  dynamic_substitutions: true
+
+substitutions:
+  _GCR_NM: disaster-management
+  _SERVICE_NAME: disaster-management
+  _SHORT_SHA: release_1.0
+  _DOCKERFILE_PATH: disaster_management/Dockerfile
+  _DEPLOY_REGION: asia-south1
+
+steps:
+  #Docker Build
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build',
+            '-t', 
+            'gcr.io/${PROJECT_ID}/${_GCR_NM}:$_SHORT_SHA',
+            '-f',
+            '${_DOCKERFILE_PATH}',
+            '.']
+  
+  ##Docker Push
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 
+            'gcr.io/${PROJECT_ID}/${_GCR_NM}:$_SHORT_SHA']
+
+# Deploy container image to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
+    args:
+      - run
+      - services
+      - update
+      - $_SERVICE_NAME
+      - '--platform=managed'
+      - '--image=gcr.io/$PROJECT_ID/${_GCR_NM}:$_SHORT_SHA'
+      - '--region=$_DEPLOY_REGION'
+      - '--quiet'
+    id: Deploy
+    entrypoint: gcloud
