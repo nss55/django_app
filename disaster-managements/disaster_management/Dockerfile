@@ -1,4 +1,4 @@
-FROM python:latest
+FROM gcr.io/cloud-builders/docker
 WORKDIR /app
 COPY . .
 RUN pip install --upgrade pip
