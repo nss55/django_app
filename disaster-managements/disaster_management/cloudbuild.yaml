@@ -15,10 +15,10 @@ steps:
   #Docker Build
   - name: "gcr.io/cloud-builders/docker"  
     entrypoint: 'bash'
-    args: ["-c",'--no-cache',"build --build-arg 'CONTAINER_PRIVATE_KEY=$$PRIVATE_KEY' --build-arg 'CONTAINER_PUBLIC_KEY=$$PUBLIC_KEY'",
-            '--network=cloudbuild','-t', 
-            'gcr.io/${PROJECT_ID}/${_GCR_NM}:$_SHORT_SHA',
-            '-f',
+    args: ["-c",'--no-cache',"build --build-arg 'CONTAINER_PRIVATE_KEY=$$PRIVATE_KEY' --build-arg 'CONTAINER_PUBLIC_KEY=$$PUBLIC_KEY'
+            -t 
+             gcr.io/${PROJECT_ID}/${_GCR_NM}:$_SHORT_SHA",
+            '-f','--network=cloudbuild',
             '${_DOCKERFILE_PATH}',
             '.']
   
