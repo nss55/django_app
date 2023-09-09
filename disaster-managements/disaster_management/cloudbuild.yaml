@@ -13,9 +13,9 @@ substitutions:
 
 steps:
   #Docker Build
-  - name: 'gcr.io/cloud-builders/docker'
+  - name: "gcr.io/cloud-builders/docker"  
     entrypoint: 'bash'
-    args: ['-c','build','--no-cache',
+    args: ["-c",'--no-cache',"build --build-arg 'CONTAINER_PRIVATE_KEY=$$PRIVATE_KEY' --build-arg 'CONTAINER_PUBLIC_KEY=$$PUBLIC_KEY'",
             '-t', 
             'gcr.io/${PROJECT_ID}/${_GCR_NM}:$_SHORT_SHA',
             '-f',
@@ -23,9 +23,9 @@ steps:
             '.']
   
   ##Docker Push
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 
-            'gcr.io/${PROJECT_ID}/${_GCR_NM}:$_SHORT_SHA']
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", 
+            "gcr.io/${PROJECT_ID}/${_GCR_NM}:$_SHORT_SHA"]
 
 # Deploy container image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
