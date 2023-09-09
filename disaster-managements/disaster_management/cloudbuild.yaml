@@ -8,13 +8,14 @@ substitutions:
   _GCR_NM: disaster-managements
   _SERVICE_NAME: disaster-managements
   _SHORT_SHA: release_1.0
-  _DOCKERFILE_PATH: disaster_management/Dockerfile
+  _DOCKERFILE_PATH: ../disaster_management/Dockerfile
   _DEPLOY_REGION: asia-south1
 
 steps:
   #Docker Build
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build',
+    entrypoint: 'bash'
+    args: ['-c','build','--no-cache',
             '-t', 
             'gcr.io/${PROJECT_ID}/${_GCR_NM}:$_SHORT_SHA',
             '-f',
