@@ -16,7 +16,7 @@ steps:
   - name: "gcr.io/cloud-builders/docker"  
     entrypoint: 'bash'
     args: ["-c",'--no-cache',"build --build-arg 'CONTAINER_PRIVATE_KEY=$$PRIVATE_KEY' --build-arg 'CONTAINER_PUBLIC_KEY=$$PUBLIC_KEY'",
-            '-t', 
+            '--network=cloudbuild','-t', 
             'gcr.io/${PROJECT_ID}/${_GCR_NM}:$_SHORT_SHA',
             '-f',
             '${_DOCKERFILE_PATH}',
