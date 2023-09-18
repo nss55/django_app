@@ -30,9 +30,10 @@ steps:
   #Deploy container image to Cloud Run
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk:slim"
     args:
-      - run
-      - services
-      - update
+      - 'run',
+      - 'deploy',
+      - 'services',
+      - 'update',
       - $_SERVICE_NAME
       - '--platform=managed'
       - '--image=gcr.io/$PROJECT_ID/${_GCR_NM}:$_SHORT_SHA'
