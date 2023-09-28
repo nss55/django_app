@@ -29,17 +29,17 @@ steps:
 
   #Deploy container image to Cloud Run
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk:slim"
-    entrypoint: gcloud
     args:
       - run
       - deploy
       - services
       - update
       - $_SERVICE_NAME
-      - '--platform=managed',
-      - '--image=gcr.io/noble-hydra-398406/github.com/nss55/django_app:$COMMIT_SHA',
-      - '--region=$_DEPLOY_REGION',
+      - '--platform=managed'
+      - '--image=gcr.io/noble-hydra-398406/github.com/nss55/django_app:$COMMIT_SHA'
+      - '--region=$_DEPLOY_REGION'
       - '--quiet'
     id: Deploy
+    entrypoint: gcloud
     
    
