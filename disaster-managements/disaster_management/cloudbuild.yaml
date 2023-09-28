@@ -8,7 +8,7 @@ substitutions:
   _GCR_NM: disaster-managements
   _SERVICE_NAME: disaster
   _SHORT_SHA: release_1.0
-  _DOCKERFILE_PATH: disaster_management/Dockerfile
+  _DOCKERFILE_PATH: disaster-managements/disaster_management/Dockerfile
   _DEPLOY_REGION: asia-east1
 
 steps:
