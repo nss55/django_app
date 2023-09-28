@@ -40,5 +40,6 @@ steps:
       - '--image=gcr.io/noble-hydra-398406/github.com/nss55/django_app:$COMMIT_SHA',
       - '--region=$_DEPLOY_REGION',
       - '--quiet'
+    id: Deploy
     
    
