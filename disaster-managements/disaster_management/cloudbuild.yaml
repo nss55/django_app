@@ -35,7 +35,7 @@ steps:
        - 'services'
        - 'update'
        - 'deploy' 
-       - '$_SERVICE_NAME'
+       #- '$_SERVICE_NAME'
        - '--platform=managed'       
        - '--image=gcr.io/$PROJECT_ID/${_GCR_NM}:$_SHORT_SHA'
        - '--region=$_DEPLOY_REGION'
