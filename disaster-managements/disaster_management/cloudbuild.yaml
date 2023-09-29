@@ -28,19 +28,19 @@ steps:
               "gcr.io/${PROJECT_ID}/${_GCR_NM}:$_SHORT_SHA"]
      
 
-  #  #Deploy container image to Cloud Run
-  # - name: "gcr.io/google.com/cloudsdktool/cloud-sdk:slim"
-  #   entrypoint: gcloud
-  #   args:
-  #     -'run'
-  #     -'deploy'
-  #     -'services'
-  #     -'$_SERVICE_NAME'
-  #     -'--platform=managed'
-  #     -'--image=gcr.io/$PROJECT_ID/${_GCR_NM}:$_SHORT_SHA'
-  #     -'--region=$_DEPLOY_REGION'
-  #     -'--quiet'
-  #    id: Deploy
+   #Deploy container image to Cloud Run
+   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk:slim"
+     entrypoint: gcloud
+     args:
+       -'run'
+       -'deploy'
+       -'services'
+       -'$_SERVICE_NAME'
+       -'--platform=managed'
+       -'--image=gcr.io/$PROJECT_ID/${_GCR_NM}:$_SHORT_SHA'
+       -'--region=$_DEPLOY_REGION'
+       -'--quiet'
+      id: Deploy
      
     
    
