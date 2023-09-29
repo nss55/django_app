@@ -14,7 +14,12 @@ substitutions:
 steps:
   #Docker Build
   - name: "gcr.io/cloud-builders/docker"  
-    args: ["-c", "docker build --build-arg 'CONTAINER_PRIVATE_KEY=$$PRIVATE_KEY' --build-arg 'CONTAINER_PUBLIC_KEY=$$PUBLIC_KEY' -t gcr.io/${PROJECT_ID}/${_JOB_NAME} ."]
+    args: ['build',
+            '-t', 
+            'gcr.io/${PROJECT_ID}/${_GCR_NM}:$_SHORT_SHA',
+            '-f',
+            '${_DOCKERFILE_PATH}',
+            '.']
   #Docker Push
   # - name: "gcr.io/cloud-builders/docker"
   #   args: ["push","gcr.io/${PROJECT_ID}/${_GCR_NM}:$_SHORT_SHA"]
