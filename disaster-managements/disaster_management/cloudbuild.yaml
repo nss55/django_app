@@ -29,7 +29,7 @@ steps:
      
 
    #Deploy container image to Cloud Run
-   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk:slim"
      args:
        - 'run'
        - 'services'
