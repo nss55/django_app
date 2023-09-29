@@ -33,8 +33,9 @@ steps:
      entrypoint: gcloud
      args:
        - run
-       - deploy
        - services
+       - update
+       - deploy
        - $_SERVICE_NAME
        - '--platform=managed'
        - '--image=gcr.io/$PROJECT_ID/${_GCR_NM}:$_SHORT_SHA'
