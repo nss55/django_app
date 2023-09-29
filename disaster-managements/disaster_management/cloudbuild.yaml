@@ -30,7 +30,6 @@ steps:
 
    #Deploy container image to Cloud Run
    - name: "gcr.io/google.com/cloudsdktool/cloud-sdk:slim"
-     entrypoint: gcloud
      args:
        - run
        - services
@@ -43,6 +42,6 @@ steps:
        - '--region=$_DEPLOY_REGION'
        - '--quiet'
      id: Deploy
-     
+     entrypoint: gcloud
         
    
