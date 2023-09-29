@@ -22,23 +22,24 @@ steps:
             '${_DOCKERFILE_PATH}',
             '.']
      id: Docker build
+     
    #Docker Push
-  - name: "gcr.io/cloud-builders/docker"
-    args: ["push","gcr.io/${PROJECT_ID}/${_GCR_NM}:$_SHORT_SHA"]
-     id: Docker push
-   #Deploy container image to Cloud Run
-  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk:slim"
-    entrypoint: gcloud
-    args:
-      -'run'
-      -'deploy'
-      -'services'
-      -'$_SERVICE_NAME'
-      -'--platform=managed'
-      -'--image=gcr.io/$PROJECT_ID/${_GCR_NM}:$_SHORT_SHA'
-      -'--region=$_DEPLOY_REGION'
-      -'--quiet'
-     id: Deploy
+  # - name: "gcr.io/cloud-builders/docker"
+  #   args: ["push","gcr.io/${PROJECT_ID}/${_GCR_NM}:$_SHORT_SHA"]
+  #    id: Docker push
+  #  #Deploy container image to Cloud Run
+  # - name: "gcr.io/google.com/cloudsdktool/cloud-sdk:slim"
+  #   entrypoint: gcloud
+  #   args:
+  #     -'run'
+  #     -'deploy'
+  #     -'services'
+  #     -'$_SERVICE_NAME'
+  #     -'--platform=managed'
+  #     -'--image=gcr.io/$PROJECT_ID/${_GCR_NM}:$_SHORT_SHA'
+  #     -'--region=$_DEPLOY_REGION'
+  #     -'--quiet'
+  #    id: Deploy
      
     
    
