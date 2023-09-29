@@ -5,8 +5,8 @@ options:
   dynamic_substitutions: true
 
 substitutions:
-  _GCR_NM: disaster-managements
-  _SERVICE_NAME: disaster
+  _GCR_NM: disaster-management
+  _SERVICE_NAME: disaster-management
   _SHORT_SHA: release_1.0
   _DOCKERFILE_PATH: disaster-managements/disaster_management/Dockerfile
   _DEPLOY_REGION: asia-east1
