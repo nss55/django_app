@@ -1,6 +1,6 @@
 FROM python:latest
 WORKDIR /app
-COPY . .
+COPY . ./disaster_management
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 RUN git config --system credential.helper gcloud.sh
