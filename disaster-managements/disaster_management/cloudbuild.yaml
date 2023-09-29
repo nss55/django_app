@@ -20,6 +20,7 @@ steps:
             '-f',
             '${_DOCKERFILE_PATH}',
             '.']
+ 
   #Docker Push
    - name: "gcr.io/cloud-builders/docker"
      args: ["push","gcr.io/${PROJECT_ID}/${_GCR_NM}:$_SHORT_SHA"]
